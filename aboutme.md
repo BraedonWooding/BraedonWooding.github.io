@@ -1,16 +1,22 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Who am I?
+published: true
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+I'm Braedon Wooding I'm really into;
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+### Science
 
-What else do you need?
+I'm currently an undergraduate at UNSW studying Advanced Physics and Computer Science.
 
-### my history
+I'm really interested in astro and particle physics.
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+### Projects
+
+A lot of my projects are random little side things such as compilers for languages I dream up, faster implementations of niche things like file system iterators in C and a few games!
+
+### Work
+
+I'm currently working as a Tutor at UNSW and as an intern at Resonate Solutions.
