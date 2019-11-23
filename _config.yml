@@ -63,7 +63,6 @@ author:
 # You can reorder the items to define the link order.
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
-  rss: false
   email: "braedonww@gmail.com"
   github: BraedonWooding
 #  twitter: daattali
