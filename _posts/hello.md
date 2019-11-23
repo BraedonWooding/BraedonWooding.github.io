@@ -2,6 +2,7 @@
 layout: post
 title: Hello
 subtitle: Welcome to my blog
+published: true
 ---
 
 Welcome!
