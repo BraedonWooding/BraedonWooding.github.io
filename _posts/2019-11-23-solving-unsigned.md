@@ -78,7 +78,7 @@ UB basically means the compiler can do whatever it wants (within reason) for exa
 ```c
 int i = 0;
 while (1) {
-  	i++;
+    i++;
 }
 ```
 
@@ -139,7 +139,7 @@ x += 1; // this is fine it is obvious it won't overflow
 i := 0;
 while (i >= 0) {
     i += 1;
-	// this will give an error
+    // this will give an error
     // that i >= 0 may overflow and needs to be handled
 }
 ```
@@ -151,7 +151,7 @@ This has no runtime cost since we are just stating you need to tell us how to ha
 ```swift
 #no_overflow i := 0;
 while (i >= 0) {
-	i += 1;
+    i += 1;
 }
 ```
 
@@ -164,8 +164,8 @@ while (i >= 0) {
 ```swift
 #check_overflow i := 0;
 while (i >= 0) {
-	// will error when this gets too big
-	i += 1;
+    // will error when this gets too big
+    i += 1;
 }
 ```
 
@@ -176,18 +176,18 @@ This will encur an error in the case it overflows (or underflows of course).  I'
 ```swift
 #saturating_overflow i := 0;
 while (i >= 0) {
-	// will technically always be >= 0
+    // will technically always be >= 0
     // since when it gets too big it'll just stay
     // at int max.
-	i += 1;
+    i += 1;
 }
 
 // and
 #wrapping_overflow i := 0;
 while (i >= 0) {
-	// will eventually be < 0
+    // will eventually be < 0
     // and stop executing
-	i += 1;
+    i += 1;
 }
 ```
 
@@ -203,9 +203,9 @@ A big case of errors in C is something like;
 
 ```c
 int *getDistArray(int64_t n) {
- 	int *array = malloc(sizeof(int) * n);
-  	// do whatever...
-	return array;
+    int *array = malloc(sizeof(int) * n);
+    // do whatever...
+    return array;
 }
 ```
 
