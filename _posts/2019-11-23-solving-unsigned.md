@@ -213,13 +213,13 @@ Now the problem is if `n * sizeof(int)` overflows then even though `n` is too la
 
 > C and C++ definitely has this issue and I believe Rust but it seems much harder for Rust to 'show' it so to speak.  It also has the problem if n < 0!
 
-X fixes this problem by defining it's equivalent of sizeof to a special type called ptr_size (awful name but basically size_t) the special part of ptr_size is that it will never promote to another type (you can manage to do it using a special conversion function but it has error bound checking).  The other special part is it's defined with `#saturating_overflow`!
+X fixes this problem by defining it's equivalent of sizeof to a special type called `ptr_size` (awful name but basically `size_t`) the special part of `ptr_size` is that it won't implicitly coerce to other types.  The other special part is it's defined with `#saturating_overflow`!
 
 This means that if you do `size * n` where n is a 64 bit int in X what will happen is that not only will `n` be converted to ptr_size but if the result of `size * n` is going to overflow then it'll just remain at max ptr_size.  This will always fail since MAX_PTR_SIZE is left as a special sentinel value to represent an impossibly large allocation (or address) kind of like how 0 represents a NULL address.
 
 In the case that you do `n - size` and the result would underflow then what will occur is that it'll saturate at `0` which in X is not a valid allocation.  This is a bit different to allocations in C which often allow `0` as a size.  You could still allow 0 by either checking it or grabbing the error it returns and ignoring it (instead of propagating it) and maybe using an optional to store the fact it has a size of 0 (in the case of an array or something).  You typically won't run into this issue though in X since you'll be using the standard library arrays (since we typically don't do raw allocations in X) and those handle the 0 sized arrays as you would expect.
 
-> No exceptions in X just error codes that are done very nicely.
+> No exceptions in X just error codes that are done very nicely.  Kinda like Rust's Result type (though it is a lot less boilerplate)
 
 Personally I love this solution since it provides a ridiculous amount of flexibility while also maintaining a huge amount of speed and forcing the user to be explicit.  My only concern is that it'll just lead to people putting `#no_overflow` (no!) or `#check_overflow` (good but eh verbose) all over the place.  So that's why I think having it always default to check (potentially with / without compiler option) is a really good idea!
 
